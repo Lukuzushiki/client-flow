@@ -23,11 +23,24 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const StatCard: Story = {
   args: {
     label: "Active Projects",
     value: 12,
     badge: "success",
     badgeLabel: "+18 %",
+    type: "stat",
+  },
+};
+
+export const TaskCard: Story = {
+  args: {
+    label: "Create auth flow",
+    badge: "overdue",
+    badgeLabel: "High",
+    dueDate: "Due this week",
+    priority: "HIGH",
+    type: "task",
+    assigned: "Febri",
   },
 };

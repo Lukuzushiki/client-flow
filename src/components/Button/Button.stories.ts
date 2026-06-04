@@ -36,3 +36,10 @@ export const Secondary: Story = {
     label: "Secondary Button",
   },
 };
+
+export const Danger: Story = {
+  args: {
+    variant: "danger",
+    label: "Danger Button",
+  },
+};

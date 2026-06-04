@@ -1,12 +1,15 @@
 export interface ButtonProps {
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "danger";
   label: string;
 }
 
 const Button = ({ label, variant }: ButtonProps) => {
-  const variantStyling = (variant: "primary" | "secondary") => {
+  const variantStyling = (variant: "primary" | "secondary" | "danger") => {
     if (variant === "primary") {
       return "text-white bg-primary rounded-[12px] text-sm font-semibold px-[18px] py-[14px] cursor-pointer duration-200 hover:bg-[#0f285e]";
+    }
+    if (variant === "danger") {
+      return "bg-white rounded-[12px] text-danger border border-[#F3C9C9] text-sm font-semibold px-[18px] py-[14px] cursor-pointer duration-200 hover:bg-[#F3C9C9]";
     }
     if (variant === "secondary") {
       return "bg-white rounded-[12px] border border-[#E5E7EB] text-sm font-semibold px-[18px] py-[14px] cursor-pointer duration-200 hover:bg-[#E5E7EB]";

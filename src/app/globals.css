@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../components/**/*.{js,ts,jsx,tsx,mdx}";
+@source "../../stories/**/*.{js,ts,jsx,tsx,mdx}";
 
 :root {
   --background: #ffffff;
@@ -15,6 +17,8 @@
   --color-warning: #d97706;
   --color-danger: #dc2626;
   --color-purple: #7c3aed;
+  --color-ink: #0b1220;
+  --border-color-default: #e6eaf1;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }

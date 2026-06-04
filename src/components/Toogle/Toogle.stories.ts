@@ -1,12 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+import { createElement } from "react";
 import { fn } from "storybook/test";
-import Badge from "./Badge";
+import { useArgs } from "storybook/preview-api";
+import Toogle from "./Toogle";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Components/Badge",
-  component: Badge,
+  title: "Components/Toogle",
+  component: Toogle,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -14,53 +16,33 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {},
+  argTypes: {
+    value: {
+      control: "boolean",
+    },
+  },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  // args: { onClick: fn() },
-} satisfies Meta<typeof Badge>;
+  args: {
+    value: false,
+    onClickToogle: fn(),
+  },
+} satisfies Meta<typeof Toogle>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Progress: Story = {
-  args: {
-    variant: "progress",
-    label: "In Progress",
-  },
-};
+export const Primary: Story = {
+  render: function Render(args) {
+    const [{ value }, updateArgs] = useArgs();
 
-export const Success: Story = {
-  args: {
-    variant: "success",
-    label: "Completed",
-  },
-};
-
-export const Overdue: Story = {
-  args: {
-    variant: "overdue",
-    label: "Overdue",
-  },
-};
-
-export const Planning: Story = {
-  args: {
-    variant: "plan",
-    label: "Planning",
-  },
-};
-
-export const Review: Story = {
-  args: {
-    variant: "review",
-    label: "Review",
-  },
-};
-
-export const Paused: Story = {
-  args: {
-    variant: "paused",
-    label: "Paused",
+    return createElement(Toogle, {
+      ...args,
+      value,
+      onClickToogle: () => {
+        args.onClickToogle?.();
+        updateArgs({ value: !value });
+      },
+    });
   },
 };

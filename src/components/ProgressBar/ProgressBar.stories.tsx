@@ -1,12 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { fn } from "storybook/test";
-import Badge from "./Badge";
+import ProgressBar from "./ProgressBar";
+
+const Progress = () => {
+  return (
+    <div className="w-[500px]">
+      <ProgressBar />
+    </div>
+  );
+};
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: "Components/Badge",
-  component: Badge,
+  title: "Components/ProgressBar",
+  component: Progress,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
@@ -17,50 +25,12 @@ const meta = {
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   // args: { onClick: fn() },
-} satisfies Meta<typeof Badge>;
+} satisfies Meta<typeof Progress>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Progress: Story = {
-  args: {
-    variant: "progress",
-    label: "In Progress",
-  },
-};
-
-export const Success: Story = {
-  args: {
-    variant: "success",
-    label: "Completed",
-  },
-};
-
-export const Overdue: Story = {
-  args: {
-    variant: "overdue",
-    label: "Overdue",
-  },
-};
-
-export const Planning: Story = {
-  args: {
-    variant: "plan",
-    label: "Planning",
-  },
-};
-
-export const Review: Story = {
-  args: {
-    variant: "review",
-    label: "Review",
-  },
-};
-
-export const Paused: Story = {
-  args: {
-    variant: "paused",
-    label: "Paused",
-  },
+export const Primary: Story = {
+  args: {},
 };
